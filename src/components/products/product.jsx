@@ -3,7 +3,10 @@ import{Card, CardMedia,CardContent,CardActions,Typography, IconBotton} from '@ma
 import { AddShoppingCart} from '@material-ui/icons';
 import { classes } from 'istanbul-lib-coverage';
 
+import useStyles from './styles'
+
 const product = ({product}) => {
+    const classes = useStyles();
   return (
    <Card className={classes.root}>
        <CardMedia className={classes.media} image='' title={product.name}/>
