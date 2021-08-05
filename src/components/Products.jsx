@@ -1,25 +1,26 @@
 import React from 'react';
-import Grid from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
-const products =[
-    {id: 1, name:"Large tote bag", description:"Large custom tote bag.", price:"$5" },
-    {id: 2, name: "small tote bag", description: "small custom tote bag.", price:"$10"}
-];
+import Product from './Products/Product';
+import useStyles from './styles';
 
+const Products = ({ products, onAddToCart }) => {
+  const classes = useStyles();
 
+  if (!products.length) return <p>Loading...</p>;
 
-const products = () => {
   return (
-    <main>
-      <Grid container justify="center" space={4}>
-        {products.map((product)=>(
-            <Grid item key={product.id} S={small} M={medium} L={large}>
-            <Product product={product}/>
-            </Grid>
-        ) )}
+    <main className={classes.content}>
+      <div className={classes.toolbar} />
+      <Grid container justify="center" spacing={4}>
+        {products.map((product) => (
+          <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
+            <Product product={product} onAddToCart={onAddToCart} />
+          </Grid>
+        ))}
       </Grid>
     </main>
   );
-}
+};
 
 export default Products;
